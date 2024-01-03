@@ -1,0 +1,28 @@
+version: '3.4'
+
+services:
+  warp:
+    hostname: example
+    image: caobug/warp-guard
+    container_name: warp
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:1080:1080"
+    environment:
+      - WARP_ORGANIZATION=required
+      - WARP_AUTH_CLIENT_ID=required
+      - WARP_AUTH_CLIENT_SECRET=required
+      # - WARP_CLI_DELAY=3
+      # - HEALTHCHECK_START_PERIOD=15
+      # - HEALTHCHECK_INTERVAL=10
+      # - HEALTHCHECK_RETRIES=3
+      # - HEALTHCHECK_TIMEOUT=10
+      # - LISTEN_PORT=1080
+      # - DISPLAY_GOST_LOGS=0
+    cap_add:
+      - NET_ADMIN
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=1
+      - net.ipv4.conf.all.src_valid_mark=1
+    volumes:
+      - ./data:/var/lib/cloudflare-warp
