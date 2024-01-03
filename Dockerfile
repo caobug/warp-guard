@@ -18,7 +18,7 @@ RUN apt-get update && \
     gunzip gost-linux-amd64-$GOST_VER.gz && \
     mv gost-linux-amd64-$GOST_VER /usr/bin/gost && \
     chmod +x /usr/bin/gost && \
-    curl -L https://github.com/docker/compose/releases/download/v${GUARD_VER}/warp-guard-linux-x86_64 -o /usr/bin/warp-guard && \
+    curl -L https://github.com/caobug/warp-guard/releases/download/v${GUARD_VER}/warp-guard-linux-x86_64 -o /usr/bin/warp-guard && \
     chmod +x /usr/bin/warp-guard
 
 # Accept Cloudflare WARP TOS
